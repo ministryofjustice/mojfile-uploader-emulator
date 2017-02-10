@@ -1,6 +1,23 @@
 require 'sinatra'
 require 'json'
 
+get '/:collection_ref' do |collection_ref|
+  content_type :json
+  files = {
+    collection: collection_ref,
+    files: [
+      { key: 'ABC123',
+        title: 'Test Document ABC123',
+        last_modified: Time.now },
+      { key: 'DEF456',
+        title: 'Test Document DEF456',
+        last_modified: Time.now }
+    ]
+  }
+  body(files.to_json)
+  status(200)
+end
+
 post '/?:collection_ref?/new' do |collection_ref|
   content_type :json
   filename = JSON.parse(request.body.read).fetch('file_filename', '')
