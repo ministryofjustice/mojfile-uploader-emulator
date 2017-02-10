@@ -1,4 +1,4 @@
 #!/bin/bash
 cd /usr/src/app
 echo "Running app"
-bundle exec puma -p 9292
+bundle exec puma -p ${PUMA_PORT:-9292}
