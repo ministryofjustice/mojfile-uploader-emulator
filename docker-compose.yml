@@ -1,0 +1,6 @@
+version: '2'
+services:
+  moj-file-uploader-emulator:
+    build: .
+    ports:
+      - "9292:9292"
