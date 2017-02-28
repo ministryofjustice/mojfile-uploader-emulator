@@ -1,10 +1,11 @@
 require 'sinatra'
 require 'json'
 
-get '/:collection_ref' do |collection_ref|
+get '/:collection_ref/?:folder:?' do |collection_ref, folder|
   content_type :json
   files = {
     collection: collection_ref,
+    folder: folder,
     files: [
       { key: 'ABC123',
         title: 'Test Document ABC123',
@@ -25,7 +26,7 @@ post '/?:collection_ref?/new' do |collection_ref|
   status(200)
 end
 
-delete '/:collection_ref/:filename' do |collection_ref, filename|
+delete '/:collection_ref/?:folder?/:filename' do |collection_ref, filename|
   status(204)
 end
 
