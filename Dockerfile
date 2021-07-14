@@ -1,4 +1,4 @@
-FROM ruby:2.5.3
+FROM ruby:2.6.6
 
 # throw errors if Gemfile has been modified since Gemfile.lock
 RUN bundle config --global frozen 1
@@ -12,7 +12,7 @@ RUN bundle install
 
 COPY . /usr/src/app
 
-ENV PUMA_PORT 9292
+ENV PUMA_PORT 8000
 
 RUN touch /etc/inittab
 
